@@ -207,4 +207,4 @@ Second Opinion is a research prototype run on historical, day-level data. It is 
 
 ## Team
 
-**Team Coke & Code Dev** — [GitHub Organization](https://github.com/Coke-and-Code-Dev/)
+**Team Coke & Code Dev** — [Coke & Code Dev - Github Organization](https://github.com/Coke-and-Code-Dev/)
