@@ -17,7 +17,7 @@ from mdit_py_plugins.anchors import anchors_plugin
 ROOT = Path(__file__).resolve().parents[2]
 SITE = ROOT / 'docs' / 'website'
 REPO = 'https://github.com/Second-Opinion-Dev/Second_Opinion'
-PAGES = 'https://second-opinion-dev.github.io/Second_Opinion/'
+PAGES = 'https://coke-and-code-dev.github.io/Second_Opinion/'
 # Files in docs/website/ that build the website but are not part of it.
 NOT_PUBLISHED = {'build.py', 'README.md', 'requirements.txt'}
 
@@ -46,7 +46,10 @@ TEMPLATE = """<!DOCTYPE html>
 <meta name="theme-color" content="#04090d">
 <meta property="og:title" content="{title} · Second Opinion">
 <meta property="og:description" content="{description}">
-<meta property="og:image" content="{pages}assets/banner.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{pages}{path}">
+<meta property="og:image" content="{pages}assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{root}assets/icon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono&display=swap">
 <link rel="stylesheet" href="{root}assets/site.css">
@@ -118,7 +121,8 @@ def sidebar(page_root: str, current: str | None) -> str:
 
 
 def page(title: str, description: str, root: str, current: str | None, body: str, edit: str = '') -> str:
-    return TEMPLATE.format(title=html.escape(title), description=html.escape(description), root=root, pages=PAGES,
+    path = f'docs/{current}/' if current else 'docs/'  # the page's own path under the site root, for og:url
+    return TEMPLATE.format(title=html.escape(title), description=html.escape(description), root=root, pages=PAGES, path=path,
                            repo=REPO, sidebar=sidebar(root, current), body=body, edit=edit)
 
 
