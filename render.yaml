@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: second-opinion-demo
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt && python dashboard/render_demo.py --build
+    startCommand: python dashboard/render_demo.py
