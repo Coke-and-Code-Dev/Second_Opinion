@@ -13,7 +13,7 @@ def build():
     if DATA.exists():
         raise SystemExit('Refusing to build: data/tai already exists. Use a clean checkout.')
     subprocess.run([sys.executable, 'src/simulation/simulate_tai.py', '--plants', '4',
-                    '--target-rows', '80000'], cwd=ROOT, check=True)
+                    '--target-rows', '80000', '--quality-scale', '0'], cwd=ROOT, check=True)
     subprocess.run([sys.executable, 'src/pipeline.py'], cwd=ROOT, check=True)
 
 
